@@ -1,8 +1,11 @@
 package com.project.ninjas.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +39,20 @@ public class NinjaControllerIntegrationTest {
 		Ninja testNinja = new Ninja(null,"Kakashi", 33,"Hidden leaf village", "Chidori");
 		String testNinjaAsJson=this.mapper.writeValueAsString(testNinja);
 		RequestBuilder req = post("/create").contentType(MediaType.APPLICATION_JSON).content(testNinjaAsJson);
-		Ninja testCreatedNinja = new Ninja(1, "Kakashi", 33, "Hidden leaf village", "Chidori");
+		Ninja testCreatedNinja = new Ninja(3, "Kakashi", 33, "Hidden leaf village", "Chidori");
 		String testCreatedNinjaAsJson = this.mapper.writeValueAsString(testCreatedNinja);
 		ResultMatcher checkStatus = status().isCreated();
 		ResultMatcher checkBody = content().json(testCreatedNinjaAsJson);
+		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+	}
+	
+	@Test
+	void getAllTest() throws Exception{
+		RequestBuilder req = get("/getAll");
+		List<Ninja> testNinja = List.of(new Ninja(1,"Naruto", 17,"Hidden leaf","Shadow clone"), new Ninja(2,"Gaara",33,"Hidden sand","Sand control"));
+		String json = this.mapper.writeValueAsString(testNinja);
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkBody = content().json(json);
 		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
 	}
 
