@@ -44,7 +44,9 @@ public class Ninja {
 
 
 
-
+public Ninja() {
+	super();
+}
 
 
 
