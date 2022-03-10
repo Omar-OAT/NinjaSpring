@@ -29,5 +29,5 @@ For version control I used github and would create new branches dependant on wha
 back into dev before branching into another feature branch.
 
 ## UML
-![uml](https://imgur.com/Ih5wIu3)
+![uml](https://imgur.com/Ih5wIu3.png)
 TBD
