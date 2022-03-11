@@ -27,7 +27,19 @@ Automated Testing - Selenium
 ## Version control
 For version control I used github and would create new branches dependant on what feature was being workend on. branching out from dev and then merging 
 back into dev before branching into another feature branch.
-
+![git](https://imgur.com/9X93bCL.png)
 ## UML
 ![uml](https://imgur.com/Ih5wIu3.png)
-TBD
+
+## postman
+
+## Coverage
+94% coverage
+![Junit](https://imgur.com/E3hiSvk.png)
+
+## Author
+Omar abu-tair - omar-OAT
+
+Special mention to the trainers and the resources provided.
+
+
